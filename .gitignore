@@ -2,3 +2,4 @@
 **/*.o
 **/Machine
 **/*.nes
+**/*.gdb_history
