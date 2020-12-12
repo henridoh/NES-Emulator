@@ -4,6 +4,7 @@
 using namespace data_types;
 
 CPU::CPU(){
+  memory = Memory();
 }
 
 // Stack operations

@@ -22,7 +22,8 @@ byte Memory::read(int address){
 
   int i;
   for(i=0; address > bank_addresses[i]; i++);
-  address -= bank_addresses[i];
+  if(i)
+    address -= bank_addresses[i-1] + 1;
   return bank_pointers[i][address];
 }
 
@@ -54,6 +55,13 @@ void Memory::add_bank(byte * bank, int size){
   if(!bank_addresses.size()){
     bank_addresses.push_back(size - 1);
   } else {
-    bank_addresses.push_back(bank_addresses.back() + size - 1);
+    bank_addresses.push_back(bank_addresses.back() + size);
   }
 };
+
+void Memory::add_mirrored_banks(byte * bank, int size, int mirrors){
+  for(int i=0; i < mirrors; i++){
+    add_bank(bank, size);
+  } std::cout << "bank 0x" << std::hex << bank_addresses.back()-(size * mirrors) + 1 << " - "
+              << "0x" << std::hex << bank_addresses.back() << std::endl;
+}

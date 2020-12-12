@@ -11,6 +11,7 @@ class Memory{
   public:
   Memory();
   void add_bank(byte * bank, int size);
+  void add_mirrored_banks(byte * bank, int size, int mirrors);
 
   void write(int address, byte value);
   byte read(int address);

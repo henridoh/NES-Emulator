@@ -1,4 +1,4 @@
-SRC_DIRS:=. processor memory ppu
+SRC_DIRS:=. processor memory ppu cartridge
 SRC_FILES:=$(foreach file,$(SRC_DIRS),$(wildcard $(file)/*.cpp))
 OBJ_FILES:=$(patsubst %.cpp, %.o, $(SRC_FILES))
 
